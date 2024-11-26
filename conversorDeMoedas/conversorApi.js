@@ -22,7 +22,6 @@ function associarTipoDeErrosDaApi(error) {
 
 
 async function getMoedaConvertidaETaxa(baseCurrency, targetCurrency, amount) {
-    console.log(`${baseURL}/${apiKey}/pair/${baseCurrency}/${targetCurrency}/${amount}`);
     const response = await fetch(`${baseURL}/${apiKey}/pair/${baseCurrency}/${targetCurrency}/${amount}`);
     const data = await response.json();
     if (!response.ok) {
