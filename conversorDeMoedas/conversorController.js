@@ -15,16 +15,16 @@ export class conversorController {
 
     validarMoedas(moedaOrigem, moedaDestino) {
         if(!this.#verificarMoedasDiferentes(moedaOrigem, moedaDestino))
-            throw new Error ('Erro: moedas de Origem e Destino não podem ser iguais');
+            throw new Error ('\nErro: moedas de origem e destino não podem ser iguais\n');
         if(!this.#verificarTamanhoDaString(moedaOrigem) || !this.#verificarTamanhoDaString(moedaDestino))
-            throw new Error ('Erro: moedas precisam ter 3 caracteres');
+            throw new Error ('\nErro: moedas precisam ter 3 caracteres\n');
     }
 
     validarValor(valor) {
         if(isNaN(valor))
-            throw new Error ('Erro: valor precisa ser um número');
+            throw new Error ('\nErro: valor precisa ser um número\n');
         if(valor <= 0)
-            throw new Error ('Erro: valor precisa ser maior que zero');
+            throw new Error ('\nErro: valor precisa ser maior que zero\n');
     }
     
     async converterMoeda(moedaOrigem, moedaDestino, valor) {

@@ -6,7 +6,7 @@ const baseURL = "https://v6.exchangerate-api.com/v6";
 function associarTipoDeErrosDaApi(error) {
     switch (error) {
         case "unsupported-code":
-            return "Erro: moeda não suportada";
+            return "Erro: moeda não suportada. Verifique a lista de moedas suportadas em https://www.exchangerate-api.com/docs/supported-currencies";
         case "malformed-request":
             return "Erro: requisição mal formada";
         case "invalid-key":

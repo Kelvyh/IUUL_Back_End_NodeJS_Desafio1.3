@@ -8,12 +8,11 @@ export class conversorView {
     
     async start() {
         while(true) {
-            const moedaOrigem = prompt('Moeda de Origem: ');
+            const moedaOrigem = prompt('Moeda de origem: ');
             if(moedaOrigem === '') {
                 break;
             }
-            const moedaDestino = prompt('Moeda de Destino: ');
-
+            const moedaDestino = prompt('Moeda de destino: ');
             try {
                 this.#controller.validarMoedas(moedaOrigem, moedaDestino);
             } catch (error) {
@@ -21,7 +20,7 @@ export class conversorView {
                 continue;
             }
 
-            const valor = prompt('Valor: ');
+            const valor = prompt('Valor: ').replace(',','.');
             try {
                 this.#controller.validarValor(valor);
             } catch (error) {
@@ -31,9 +30,10 @@ export class conversorView {
 
             try {
                 const [valorConvertido, taxa] = await this.#controller.converterMoeda(moedaOrigem, moedaDestino, valor);
-                console.log(`${moedaOrigem} ${valor} => ${moedaDestino} ${valorConvertido.toFixed(2)} (Taxa de Conversão: ${taxa.toFixed(6)}) \n`);
+                console.log(`\n${moedaOrigem.toUpperCase()} ${parseFloat(valor).toFixed(2).replace('.',',')} => ${moedaDestino.toUpperCase()} ${valorConvertido.toFixed(2).replace('.',',')}`);
+                console.log(`Taxa: ${taxa.toFixed(6).replace('.',',')}\n`)
             } catch (error) {
-                console.log(error.message+'\n');
+                console.log('\n'+error.message+'\n');
             }
         }
     }
